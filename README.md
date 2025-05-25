@@ -1,94 +1,84 @@
 
-<h1 align="center">📰 My News Website</h1>
+# 📰 My News Website
+
 <p align="center">
-  <img src="https://img.shields.io/badge/HTML-Structured-orange?style=flat-square&logo=html5" />
+  <img src="https://img.shields.io/badge/HTML-Interactive-orange?style=flat-square&logo=html5" />
   <img src="https://img.shields.io/badge/CSS-Stylized-blue?style=flat-square&logo=css3" />
   <img src="https://img.shields.io/badge/JavaScript-Dynamic-yellow?style=flat-square&logo=javascript" />
 </p>
 
+---
+
+## 🚀 About the Project
+
+**My News Website** is a clean, modern, and fully responsive news portal built with HTML, CSS, and JavaScript.  
+It features dynamic content updates, multiple news categories, and a sleek user interface optimized for all devices.
+
+---
+
+## 📹 Demo Video
+
+Watch the full demo video (1 min 57 sec) of the project live on GitHub Pages:  
 <p align="center">
-  <a href="https://1drv.ms/v/c/dd8a0b9fadfad057/Eeqpc9w773RKqhd7d3xuj6oBdasMFfon5AZ0nQkFnIXrEw" target="_blank" rel="noopener noreferrer">
-    <img src="https://img.shields.io/badge/🎥 Watch%20Demo%20Video-Click%20Here-blue?style=for-the-badge&logo=windows" alt="Watch Demo Video" />
+  <a href="https://Madhu1207-coder.github.io/my-news-website/" target="_blank" rel="noopener noreferrer">
+    <img src="https://vimeo.com/" alt="Watch Demo Video" width="60%" />
   </a>
 </p>
 
 ---
 
-<h2>🚀 About the Project</h2>
+## 🛠️ Built With
 
-💡 **My News Website** is a clean, modern, and responsive news platform that delivers the latest headlines and articles in an organized, user-friendly interface.
-
-Features include:  
-- 🗞️ Categorized news sections (Technology, Sports, Entertainment, etc.)  
-- 🔍 Search functionality to find news by keywords  
-- 🌍 Responsive layout for desktop and mobile devices  
-- 🕒 Real-time news updates from multiple sources  
-- 🎨 Stylish UI with smooth animations and easy navigation  
+- ✅ HTML5 + CSS3  
+- ⚡ JavaScript (Vanilla)  
+- 🎨 Responsive Design  
+- 🌐 GitHub Pages (for demo video hosting)
 
 ---
 
-<h2>✨ Features</h2>
+## 📁 File Structure
 
-### 📰 Home View  
-<p align="center">
-  <img src="https://github.com/Madhu1207-coder/my-news-website/blob/main/assets/homepage-screenshot.png" width="60%" alt="Home View Screenshot" />
-</p>
+```
 
-### 🔍 Search Bar  
-Search news articles dynamically by typing keywords and filtering results instantly.
+my-news-website/
+├── index.html         # Main webpage
+├── style.css          # Stylesheet
+├── script.js          # JavaScript for dynamic content
+└── README.md          # Project overview and info
 
-### 📱 Responsive Design  
-Fully adaptable layout for all screen sizes including phones, tablets, and desktops.
-
----
-
-<h2>📁 File Structure</h2>
-
-```plaintext
-📁 my-news-website
-├── index.html          # Main landing page
-├── style.css           # Styling for layout and components
-├── script.js           # Dynamic news loading and UI logic
-├── assets              # Images, icons, and fonts
-└── README.md           # This file
 ````
 
 ---
 
-<h2>🛠️ Built With</h2>
+## 📦 How to Run Locally
 
-* ✅ HTML5 + CSS3
-* ⚡ JavaScript (ES6)
-* 🌐 Responsive Web Design principles
-* 📦 News API (for fetching live news data)
+1. Clone the repository:
 
----
+```bash
+git clone https://github.com/Madhu1207-coder/my-news-website.git
+````
 
-<h2>📦 How to Run</h2>
+2. Navigate to the folder:
 
-1. 🔽 Clone the repository:
+```bash
+cd my-news-website
+```
 
-   ```bash
-   git clone https://github.com/Madhu1207-coder/my-news-website.git
-   ```
-2. 🚀 Open in browser:
+3. Open `index.html` in your browser (or use Live Server extension in VS Code):
 
-   ```bash
-   cd my-news-website
-   open index.html
-   ```
-
-   Or use Live Server in VS Code for better local development experience.
+```bash
+open index.html
+```
 
 ---
 
-<h2 align="center">🌐 Connect With Me</h2>
+## 🌐 Connect With Me
 
 <p align="center">
-  <a href="https://github.com/Madhu1207-coder">
+  <a href="https://github.com/Madhu1207-coder" target="_blank" rel="noopener noreferrer">
     <img src="https://img.shields.io/badge/GitHub-Follow-black?style=for-the-badge&logo=github" />
   </a>
-  <a href="https://www.linkedin.com/in/madhumitha-b-a545a525b/">
+  <a href="https://www.linkedin.com/in/madhumitha-b-a545a525b/" target="_blank" rel="noopener noreferrer">
     <img src="https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin" />
   </a>
   <a href="mailto:madhumithab1207@gmail.com">
@@ -98,11 +88,18 @@ Fully adaptable layout for all screen sizes including phones, tablets, and deskt
 
 ---
 
-<h2 align="center">⭐ Like this project? Star it on GitHub!</h2>
-<p align="center">🔁 Pull Requests are Welcome | 🎉 Contributions Appreciated</p>
+⭐ If you like this project, please star it on GitHub!
+🔁 Pull requests and contributions are very welcome.
+
 ```
 
 ---
 
-If you want, I can also help you generate screenshots placeholders or badges specific to your repo.
-Just let me know!
+Once you enable GitHub Pages and upload the `index.html` I gave earlier, just update the demo video URL in this README (`https://Madhu1207-coder.github.io/my-news-website/`) and you're good to go!
+
+---
+
+Need help with anything else?
+```
+
+
