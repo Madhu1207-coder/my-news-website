@@ -15,6 +15,10 @@
 It features dynamic content updates, multiple news categories, and a sleek user interface optimized for all devices.
 
 ---
+<video width="640" height="360" controls>
+  <source src="preview.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ## 📹 Demo Video
 
