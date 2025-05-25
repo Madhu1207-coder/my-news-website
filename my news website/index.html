@@ -1,0 +1,1813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        :root {
+            --primary-color: #768e17; 
+            --secondary-color: #000000; 
+            --light-color: #f8f9fa; 
+            --dark-color: #343a40;
+            --hover-color: #005f5f; 
+        }
+        body
+        {
+           
+            background-color: #c8cb9f;
+        }
+        /* Custom Navbar Styling */
+        .navbar {
+            background: linear-gradient(135deg, #1a2235 0%, #343a40 100%);
+            padding: 15px 0;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand:hover {
+            transform: translateY(-2px);
+            text-shadow: 0 2px 10px rgba(255,255,255,0.2);
+        }
+
+        .navbar .logo {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .navbar .logo:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        .navbar .search-form {
+            position: relative;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .navbar .form-control {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 25px;
+            color: #fff;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar .form-control:focus {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.3);
+            box-shadow: 0 0 0 0.2rem rgba(255,255,255,0.1);
+        }
+
+        .navbar .form-control::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .navbar .btn-outline-success {
+            border-radius: 20px;
+            padding: 8px 20px;
+            color: #fff;
+            border: 2px solid rgba(255,255,255,0.2);
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .navbar .btn-outline-success:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.4);
+            transform: translateY(-2px);
+        }
+
+        .navbar .social-icons .btn {
+            padding: 8px 15px;
+            margin-left: 10px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            border: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .navbar .social-icons .btn:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .navbar .social-icons .btn i {
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+
+        /* Social Icons Specific Colors */
+        .navbar .social-icons .btn-twitter:hover {
+            background: #1DA1F2;
+        }
+
+        .navbar .social-icons .btn-youtube:hover {
+            background: #FF0000;
+        }
+
+        .navbar .social-icons .btn-linkedin:hover {
+            background: #0077B5;
+        }
+
+        .navbar .social-icons .btn-instagram:hover {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+        }
+
+        .text-gradient {
+            background: linear-gradient(45deg, #1a73e8, #43a047);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-brand {
+                font-size: 1.4rem;
+            }
+            
+            .navbar .social-icons .btn {
+                padding: 6px 12px;
+                margin-left: 5px;
+            }
+
+            .navbar .social-icons .btn span {
+                display: none;
+            }
+
+            .navbar .search-form {
+                margin: 10px 0;
+            }
+        }
+        /* Categories Section Styling */
+        .category-box {
+            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 8px 32px rgba(31,38,135,0.15);
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+
+        .category-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(31,38,135,0.2);
+        }
+
+        .category-box h4 {
+            color: #1a2235;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .category-box h4::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #1a73e8, #43a047);
+            border-radius: 2px;
+        }        .category-button {
+            background: linear-gradient(135deg, #768e17, #647612);
+            color: #ffffff;
+            border: none;
+            padding: 12px;
+            margin: 5px 0;
+            cursor: pointer;
+            border-radius: 15px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .category-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            color: #fff;
+        }
+
+        .category-button i {
+            font-size: 1.2rem;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .category-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #1a73e8, #43a047);
+            transition: all 0.5s ease;
+            z-index: 1;
+        }
+
+        .category-button:hover::before {
+            left: 0;
+        }
+
+        .category-button span {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Category-specific hover colors */
+        .category-button.sports:hover::before {
+            background: linear-gradient(90deg, #FF4B2B, #FF416C);
+        }
+
+        .category-button.entertainment:hover::before {
+            background: linear-gradient(90deg, #FC466B, #3F5EFB);
+        }
+
+        .category-button.business:hover::before {
+            background: linear-gradient(90deg, #11998e, #38ef7d);
+        }
+
+        .category-button.health:hover::before {
+            background: linear-gradient(90deg, #F00000, #DC281E);
+        }
+
+        .category-button.science:hover::before {
+            background: linear-gradient(90deg, #4facfe, #00f2fe);
+        }
+
+        .category-button.technology:hover::before {
+            background: linear-gradient(90deg, #396afc, #2948ff);
+        }
+
+        .category-button i, .category-button span {
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .category-button:hover i {
+            transform: scale(1.2) rotate(360deg);
+            color: #fff;
+        }
+
+        .category-button:hover span {
+            color: #fff;
+        }
+
+        @keyframes buttonPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .category-button:active {
+            animation: buttonPulse 0.3s ease-in-out;
+        }
+        .ad-banner {
+            background-color: var(--light-color);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        main {
+            display: flex;
+            flex: 1;
+            padding: 1em;
+        }
+        section {
+            flex: 1;
+            background-color: rgb(223, 212, 212);
+            padding: 1em;
+            margin: 0.5em;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .breaking-news {
+            background-color: #af7c1d;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        .btn-primary:hover {
+            background-color: var(--hover-color);
+            border-color: var(--hover-color);
+        }
+        .btn-outline-success {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        .btn-outline-success:hover {
+            color: white;
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        .btn-success {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        .btn-success:hover {
+            background-color: var(--hover-color);
+            border-color: var(--hover-color);
+        }
+        /* Weather Map Section Styling */
+        #weather-map {
+            background: linear-gradient(135deg, #cde15c 0%, #d7e858 100%);
+            box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 10px 0 0 0;
+            position: relative;
+        }
+        #weather-map iframe {
+            background: transparent;
+            border-radius: 10px;
+        }
+        .weather-detail-box {
+            background: #232e47;
+            color: #fff;
+            min-height: 70px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, color 0.2s;
+        }
+        .weather-detail-label, .weather-detail-value {
+            color: #b0b8c1;
+            transition: color 0.2s;
+        }        body.light-theme .weather-detail-box,
+        body:not(.dark-theme) .weather-detail-box {
+            background: #ffeb3b !important;
+            color: #232e47 !important;
+            border: 1px solid #e0e0e0;
+        }
+        body.light-theme .weather-detail-label, body.light-theme .weather-detail-value,
+        body:not(.dark-theme) .weather-detail-label, body:not(.dark-theme) .weather-detail-value {
+            color: #232e47 !important;
+        }
+        body.dark-theme .weather-detail-box {
+            background: #232e47 !important;
+            color: #fff !important;
+        }        body.dark-theme .weather-detail-label, body.dark-theme .weather-detail-value {
+            color: #b0b8c1 !important;
+        }
+        /* Animated Calendar Section Styling */
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+        .calendar-anim-card {
+            transition: box-shadow 0.3s, transform 0.3s;
+            position: relative;
+            overflow: visible;
+        }
+        .calendar-anim-card:hover {
+            box-shadow: 0 16px 48px #1a73e899;
+            transform: translateY(-6px) scale(1.025);
+        }        .calendar-bg-animated {
+            position: absolute;
+            z-index: 0;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://www.jiomart.com/images/product/original/rvqotkkjzx/craft-qila-cute-baby-boy-poster-for-pregnant-women-size-12x18-inches-multicolor-set-of-6-posters-product-images-orvqotkkjzx-p598895115-0-202302272053.jpg?im=Resize=(1000,1000)');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.85;
+            border-radius: 20px;
+        }
+        @keyframes calendarGradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .calendar-glass {
+            background: rgba(255,255,255,0.18) !important;
+            backdrop-filter: blur(8px) saturate(1.2);
+            border: 1.5px solid #fff3;
+        }
+        .calendar-header {
+            background: linear-gradient(90deg,#1a73e8 0%,#43a047 100%);
+            color: #fff;
+            z-index: 2;
+            position: relative;
+        }
+        .calendar-title {
+            background: linear-gradient(90deg,#1a73e8 0%,#43a047 100%);
+            border-radius: 12px 12px 0 0;
+            padding: 10px 18px 10px 12px;
+            box-shadow: 0 2px 12px #1a73e81a;
+        }
+        .calendar-icon-wrapper {
+            font-size: 2.1rem;
+            color: #a22a2a;
+            background: linear-gradient(135deg,#ffb300 0%,#43a047 100%);
+            border-radius: 50%;
+            padding: 8px 12px;
+            box-shadow: 0 2px 8px #1a73e84d;
+        }
+        .calendar-date-pill {
+            background: linear-gradient(90deg,#43a047 0%,#1a73e8 100%);
+            color: #fff;
+            border-radius: 18px;
+            padding: 4px 16px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            box-shadow: 0 2px 8px #1a73e84d;
+        }
+        .calendar-month-pills {
+            z-index: 2;
+            position: relative;
+        }
+        .month-pill {
+            display: inline-block;
+            background: linear-gradient(90deg,#fff 0%,#e3f0ff 100%);
+            color: #1a73e8;
+            border-radius: 16px;
+            padding: 4px 14px;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 1px 4px #1a73e81a;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s, transform 0.2s;
+            border: 2px solid #fff6;
+        }
+        .month-pill.active, .month-pill:hover {
+            background: linear-gradient(90deg,#43a047 0%,#1a73e8 100%);
+            color: #fff;
+            transform: scale(1.08);
+            border: 2px solid #fff;
+        }
+        .calendar-event-chips {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 3;
+        }
+        .event-chip {
+            position: absolute;
+            padding: 7px 18px 7px 12px;
+            border-radius: 18px;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 2px 8px #0002;
+            opacity: 0.93;
+            pointer-events: auto;
+            animation-duration: 1.2s;
+        }
+        .calendar-iframe-wrapper {
+            position: relative;
+            z-index: 2;
+        }
+        .calendar-frosted-glass {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255,255,255,0.18);
+            backdrop-filter: blur(2.5px) saturate(1.1);
+            z-index: 1;
+            border-radius: 0 0 20px 20px;
+            pointer-events: none;
+        }
+        .calendar-glow {
+            position: absolute;
+            left: 50%;
+            top: 90%;
+            width: 180px;
+            height: 40px;
+            background: radial-gradient(circle, #1a73e8 0%, #43a047 80%, transparent 100%);
+            opacity: 0.18;
+            filter: blur(12px);
+            transform: translate(-50%, 0);
+            pointer-events: none;
+            z-index: 2;
+        }
+        /* Confetti Animation */
+        .calendar-confetti {
+            pointer-events: none;
+            position: absolute;
+            left: 0; top: 0; width: 100%; height: 100%;
+            z-index: 10;
+        }
+        .calendar-anim-card:hover .calendar-confetti {
+            animation: confettiBurst 1.2s linear 1;
+        }
+        @keyframes confettiBurst {
+            0% { opacity: 0; }
+            10% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        /* Custom Styles for New Calendar Section */
+        .calendar-anim-card {
+            transition: box-shadow 0.3s, transform 0.3s;
+            background: linear-gradient(135deg,#f7b42c 0%,#fc575e 40%,#43e97b 100%) !important;
+            border-radius: 24px !important;
+            border: 1.5px solid #fff3 !important;
+            box-shadow: 0 8px 32px #1a73e81a, 0 0 0 4px #fff2 inset !important;
+            overflow: hidden;
+            position: relative;
+        }
+        .calendar-anim-card:hover {
+            box-shadow: 0 16px 48px #1a73e84d, 0 0 0 8px #fff3 inset;
+            transform: translateY(-6px) scale(1.025);
+        }
+        .calendar-header {
+            background: linear-gradient(90deg,#1a73e8 0%,#43a047 100%);
+            color: #fff;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 2px 12px #1a73e822;
+        }
+        .calendar-glow {
+            position: absolute;
+            left: 50%;
+            top: 92%;
+            width: 200px;
+            height: 44px;
+            background: radial-gradient(circle, #1a73e8 0%, #43a047 80%, transparent 100%);
+            opacity: 0.22;
+            filter: blur(14px);
+            transform: translate(-50%, 0);
+            pointer-events: none;
+        }
+        .calendar-rainbow-bar {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 7px;
+            background: linear-gradient(90deg,#43e97b 0%,#38f9d7 20%,#f7b42c 40%,#fc575e 60%,#1a73e8 80%,#43a047 100%);
+            z-index: 2;
+            animation: rainbowBarMove 2.5s linear infinite alternate;
+        }
+        @keyframes rainbowBarMove {
+            0% { filter: brightness(1.1) saturate(1.2); }
+            100% { filter: brightness(1.3) saturate(1.5); }
+        }
+        .calendar-month-pills .month-pill {
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 18px;
+            font-weight: 600;
+            font-size: 1.02rem;
+            margin: 0 2px;
+            box-shadow: 0 2px 8px #1a73e822;
+            border: 1.5px solid #fff6;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            opacity: 0.95;
+        }
+        .calendar-month-pills .month-pill:hover {
+            transform: scale(1.08) rotate(-2deg);
+            box-shadow: 0 4px 16px #1a73e822;
+            opacity: 1;
+        }
+        .calendar-event-chips .event-chip {
+            display: inline-block;
+            padding: 5px 16px;
+            border-radius: 16px;
+            font-weight: 600;
+            font-size: 0.98rem;
+            margin: 0 2px;
+            box-shadow: 0 2px 8px #1a73e822;
+            border: 1.5px solid #fff6;
+            opacity: 0.97;
+            pointer-events: none;
+            animation-duration: 1.2s;
+        }
+        @keyframes calendarFadeIn {
+            from { opacity: 0; transform: translateY(40px) scale(0.98); }
+            to { opacity: 1; transform: none; }
+        }
+        /* Enhanced Interactive Calendar Styles */
+        .enhanced-calendar {
+            background: var(--calendar-bg, #fff);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .calendar-toolbar {
+            margin-bottom: 15px;
+        }
+        .btn-calendar {
+            background: var(--btn-bg, #f0f2f5);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--text-color, #333);
+        }
+        .btn-calendar:hover {
+            background: var(--btn-hover-bg, #e4e6e8);
+            transform: scale(1.1);
+        }
+        .current-month-year {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0 15px;
+            color: var(--text-color, #333);
+        }
+        .calendar-categories {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .category-chip {
+            padding: 5px 12px;
+            border-radius: 15px;
+            color: white;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .category-chip:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .calendar-main {
+            background: var(--calendar-main-bg, #f8f9fa);
+            border-radius: 15px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        .weekdays-header {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-muted, #6c757d);
+            margin-bottom: 10px;
+        }
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+            background: var(--day-bg, #fff);
+        }
+        .calendar-day:hover {
+            background: var(--day-hover-bg, #e9ecef);
+            transform: scale(1.1);
+        }
+        .calendar-day.today {
+            background: var(--today-bg, #e8f0fe);
+            border: 2px solid #1a73e8;
+        }
+        .calendar-day.has-event::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+        .upcoming-events {
+            margin-top: 20px;
+        }
+        .upcoming-events-list {
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        .event-item {
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 5px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        /* Theme Classes */
+        .calendar-dark {
+            --calendar-bg: #1a1a1a;
+            --calendar-main-bg: #2d2d2d;
+            --text-color: #fff;
+            --text-muted: #aaa;
+            --day-bg: #333;
+            --day-hover-bg: #444;
+            --btn-bg: #333;
+            --btn-hover-bg: #444;
+            --today-bg: #1a73e833;
+        }
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .calendar-day { animation: fadeIn 0.3s ease-out; }
+        .text-gradient {
+            background: linear-gradient(45deg, #1a73e8, #43a047);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }        /* Calendar Section Styles */
+        .calendar-anim-card {
+            transition: box-shadow 0.3s, transform 0.3s;
+            background: linear-gradient(135deg, #f7b42c 0%, #fc575e 40%, #43e97b 100%) !important;
+            border-radius: 24px !important;
+            border: 1.5px solid #fff3 !important;
+            box-shadow: 0 8px 32px rgba(26, 115, 232, 0.1), 0 0 0 4px rgba(255, 255, 255, 0.13) inset !important;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .calendar-anim-card:hover {
+            box-shadow: 0 16px 48px rgba(26, 115, 232, 0.3), 0 0 0 8px rgba(255, 255, 255, 0.2) inset;
+            transform: translateY(-6px) scale(1.025);
+        }
+
+        .calendar-rainbow-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 7px;
+            background: linear-gradient(90deg, #43e97b 0%, #38f9d7 20%, #f7b42c 40%, #fc575e 60%, #1a73e8 80%, #43a047 100%);
+            z-index: 2;
+            animation: rainbowBarMove 2.5s linear infinite alternate;
+        }
+
+        .calendar-bg-animated {
+            position: absolute;
+            z-index: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://anegabawa.com/wp-content/uploads/2024/05/baby-girl-photoshoot-3-4-5-6-months-brown-yellow-floral-backdrop-white-frock-delhi-gurgaon-noida-anega-bawa.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.85;
+            border-radius: 20px;
+        }
+
+        .calendar-glass {
+            background: rgba(255, 255, 255, 0.18) !important;
+            backdrop-filter: blur(8px) saturate(1.2);
+            border: 1.5px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .calendar-header {
+            background: linear-gradient(90deg, #1a73e8 0%, #43a047 100%);
+            color: #fff;
+            padding: 20px;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 2px 12px rgba(26, 115, 232, 0.13);
+        }
+
+        .calendar-icon-wrapper {
+            font-size: 2.1rem;
+            padding: 12px;
+            background: linear-gradient(135deg, #ffb300 0%, #43a047 100%);
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(26, 115, 232, 0.3);
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calendar-date-pill {
+            background: linear-gradient(90deg, #43a047 0%, #1a73e8 100%);
+            color: #fff;
+            border-radius: 18px;
+            padding: 8px 16px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(26, 115, 232, 0.3);
+        }
+
+        .month-pill {
+            display: inline-block;
+            background: linear-gradient(90deg, #fff 0%, #e3f0ff 100%);
+            color: #1a73e8;
+            border-radius: 16px;
+            padding: 8px 20px;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 1px 4px rgba(26, 115, 232, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .month-pill.active,
+        .month-pill:hover {
+            background: linear-gradient(90deg, #43a047 0%, #1a73e8 100%);
+            color: #fff;
+            transform: scale(1.08);
+            border: 2px solid #fff;
+        }
+
+        .calendar-body {
+            position: relative;
+            min-height: 500px;
+            overflow: hidden;
+        }
+
+        .calendar-iframe-wrapper {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        .calendar-frosted-glass {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(2.5px) saturate(1.1);
+            z-index: 1;
+            border-radius: 0 0 20px 20px;
+            pointer-events: none;
+        }
+
+        .calendar-glow {
+            position: absolute;
+            left: 50%;
+            top: 90%;
+            width: 180px;
+            height: 40px;
+            background: radial-gradient(circle, #1a73e8 0%, #43a047 80%, transparent 100%);
+            opacity: 0.18;
+            filter: blur(12px);
+            transform: translate(-50%, 0);
+            pointer-events: none;
+            z-index: 2;
+        }
+        @keyframes rainbowBarMove {
+            0% { filter: brightness(1.1) saturate(1.2); }
+            100% { filter: brightness(1.3) saturate(1.5); }
+        }
+        @keyframes calendarFadeIn {
+            from { opacity: 0; transform: translateY(40px) scale(0.98); }
+            to { opacity: 1; transform: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img class="logo" src="../logo.jpg" alt="logo" style="width: 50px; height: 50px; margin-right: 15px;">
+                <span class="brand-text">DAILY FED</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" 
+                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation"
+                    style="border: 1px solid rgba(255,255,255,0.3); padding: 6px 10px;">
+                <i class="fas fa-bars" style="color: #fff;"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <form class="d-flex search-form mx-auto" role="search" onsubmit="searchNews(event)">
+                    <div class="input-group">
+                        <input id="search-input" class="form-control" type="search" 
+                               placeholder="Search for news..." aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">
+                            <i class="fas fa-search me-1"></i>Search
+                        </button>
+                    </div>
+                </form>
+                <div class="social-icons d-flex align-items-center">
+                    <a href="https://x.com/VelammalEnggC?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" 
+                       target="_blank" class="btn btn-twitter">
+                        <i class="fab fa-twitter"></i><span>Twitter</span>
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=w6Nu5ieVzS8" 
+                       target="_blank" class="btn btn-youtube">
+                        <i class="fab fa-youtube"></i><span>YouTube</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/satishchennai/?originalSubdomain=in" 
+                       target="_blank" class="btn btn-linkedin">
+                        <i class="fab fa-linkedin-in"></i><span>LinkedIn</span>
+                    </a>
+                    <a href="https://www.instagram.com/vec_chennai/" 
+                       target="_blank" class="btn btn-instagram">
+                        <i class="fab fa-instagram"></i><span>Instagram</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container-fluid my-4 px-0">
+        <div class="row g-0">
+            <div class="col-lg-3 col-md-4 col-12 d-flex flex-column" style="min-height:100vh; background:#f5f6e9; border-radius:0;">
+                <div class="category-box mt-4">
+                    <h4 class="text-center mb-4">
+                        <i class="fas fa-th-large me-2"></i>
+                        Categories
+                    </h4>
+                    <div class="row row-cols-2 g-3">
+                        <div class="col">
+                            <button class="category-button sports w-100" onclick="fetchCategory('sports')">
+                                <i class="fas fa-futbol"></i>
+                                <span>Sports</span>
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button class="category-button entertainment w-100" onclick="fetchCategory('entertainment')">
+                                <i class="fas fa-film"></i>
+                                <span>Entertainment</span>
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button class="category-button business w-100" onclick="fetchCategory('business')">
+                                <i class="fas fa-briefcase"></i>
+                                <span>Business</span>
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button class="category-button health w-100" onclick="fetchCategory('health')">
+                                <i class="fas fa-heartbeat"></i>
+                                <span>Health</span>
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button class="category-button science w-100" onclick="fetchCategory('science')">
+                                <i class="fas fa-flask"></i>
+                                <span>Science</span>
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button class="category-button technology w-100" onclick="fetchCategory('technology')">
+                                <i class="fas fa-microchip"></i>
+                                <span>Technology</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <section id="stock-market" class="mb-4 p-3">
+                    <h2>Stock Market</h2>
+                    <div id="stock-info">
+                        <p>Loading stock market data...</p>
+                    </div>
+                </section>
+                <section id="games-section" class="mb-4 p-3">
+                    <h2 class="mb-3"><i class="fas fa-gamepad me-2"></i>Games</h2>
+                    <div class="card shadow-sm" style="border-radius:16px; background:#fff; border:1px solid #e0e0e0;">
+                        <div class="card-body p-3">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <button class="btn btn-light btn-sm" title="Previous" style="border-radius:50%;"><i class="fas fa-chevron-left"></i></button>
+                                <span style="font-weight:600; font-size:1.1rem; color:#1a73e8;">Featured Games</span>
+                                <button class="btn btn-light btn-sm" title="Next" style="border-radius:50%;"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                            <div class="row g-2 mb-2">
+                                <div class="col-4 text-center">
+                                    <a href="https://www.chess.com/play/online" target="_blank" style="text-decoration:none;">
+                                        <div class="p-2" style="background:#f0f6ff; border-radius:10px; cursor:pointer;">
+                                            <i class="fas fa-chess-knight fa-2x mb-1" style="color:#1a73e8;"></i>
+                                            <div style="font-size:0.98rem; font-weight:500;">Chess</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <a href="https://www.jigsawplanet.com/" target="_blank" style="text-decoration:none;">
+                                        <div class="p-2" style="background:#f0f6ff; border-radius:10px; cursor:pointer;">
+                                            <i class="fas fa-puzzle-piece fa-2x mb-1" style="color:#43a047;"></i>
+                                            <div style="font-size:0.98rem; font-weight:500;">Puzzle</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <a href="https://www.coolmathgames.com/0-dice" target="_blank" style="text-decoration:none;">
+                                        <div class="p-2" style="background:#f0f6ff; border-radius:10px; cursor:pointer;">
+                                            <i class="fas fa-dice fa-2x mb-1" style="color:#e53935;"></i>
+                                            <div style="font-size:0.98rem; font-weight:500;">Dice</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row g-2 mb-2">
+                                <div class="col-4 text-center">
+                                    <a href="https://www.memozor.com/memory-games/for-adults/online-and-free" target="_blank" style="text-decoration:none;">
+                                        <div class="p-2" style="background:#f0f6ff; border-radius:10px; cursor:pointer;">
+                                            <i class="fas fa-brain fa-2x mb-1" style="color:#ff9800;"></i>
+                                            <div style="font-size:0.98rem; font-weight:500;">Memory</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <a href="https://www.mathplayground.com/logic_shapefit.html" target="_blank" style="text-decoration:none;">
+                                        <div class="p-2" style="background:#f0f6ff; border-radius:10px; cursor:pointer;">
+                                            <i class="fas fa-shapes fa-2x mb-1" style="color:#1976d2;"></i>
+                                            <div style="font-size:0.98rem; font-weight:500;">Shapes</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <a href="https://www.miniclip.com/games/basketball-stars/en/" target="_blank" style="text-decoration:none;">
+                                        <div class="p-2" style="background:#f0f6ff; border-radius:10px; cursor:pointer;">
+                                            <i class="fas fa-basketball-ball fa-2x mb-1" style="color:#af7c1d;"></i>
+                                            <div style="font-size:0.98rem; font-weight:500;">Sports</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end mt-2">
+                                <a href="https://www.crazygames.com/" target="_blank" class="btn btn-outline-primary btn-sm"><i class="fas fa-gamepad me-1"></i>Explore more games</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Flipkart & Amazon Section (replaces Chatbot) -->
+                <section id="shopping-section" class="mb-4 p-3">
+                    <h2 class="mb-3"><i class="fas fa-shopping-cart me-2"></i>Shop Online</h2>
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <div class="mb-2">
+                                <div style="font-weight:600; color:#2874f0; margin-bottom:4px;"><i class="fas fa-play-circle me-1"></i>Watch Video</div>
+                    <video width="100%" height="auto" controls autoplay loop muted style="border-radius:12px; background:#f7faff;">
+                                    <source src="../59093-490977482_small.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="card shadow-sm" style="border-radius:16px; background:#fff; border:1px solid #e0e0e0;">
+                                <div class="card-body d-flex align-items-center">
+                                    <img src="https://cdn.dribbble.com/userupload/41953803/file/original-8b637622421da5c47cff2e33f8a9e890.gif" alt="Flipkart" style="width:48px;height:48px;border-radius:8px;margin-right:18px;">
+                                    <div class="flex-grow-1">
+                                        <div style="font-weight:600;font-size:1.15rem;">Flipkart</div>
+                                        <div style="color:#555;font-size:0.98rem;">India's leading online shopping site for electronics, fashion, and more.</div>
+                                    </div>
+                                    <a href="https://www.flipkart.com/" target="_blank" class="btn btn-primary ms-3"><i class="fas fa-external-link-alt me-1"></i>Visit</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mb-2">
+                                <div style="font-weight:600; color:#ff9900; margin-bottom:4px;"><i class="fas fa-play-circle me-1"></i>Watch Video</div>
+                <video width="100%" height="auto" controls autoplay loop muted style="border-radius:12px; background:#f7faff;">
+                                    <source src="../137246-766338223_small.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="card shadow-sm" style="border-radius:16px; background:#fff; border:1px solid #e0e0e0;">
+                                <div class="card-body d-flex align-items-center">
+                                    <img src="https://i.pinimg.com/originals/79/1c/aa/791caae6a49ae8228206006ebd2173e7.gif" alt="Amazon" style="width:70px;height:32px;margin-right:18px;">
+                                    <div class="flex-grow-1">
+                                        <div style="font-weight:600;font-size:1.15rem;">Amazon</div>
+                                        <div style="color:#555;font-size:0.98rem;">Shop millions of products on Amazon India – electronics, books, and more.</div>
+                                    </div>
+                                    <a href="https://www.amazon.in/" target="_blank" class="btn btn-warning ms-3" style="color:#232f3e;font-weight:600;"><i class="fas fa-external-link-alt me-1"></i>Visit</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-lg-6 col-md-8 col-12" style="background:transparent; min-height:100vh;">
+                <!-- News Container -->
+                <div id="news-container" class="container mt-4">
+                    <div class="text-center">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p>Loading news...</p>
+                    </div>
+                </div>
+                <!-- Advertisement Section -->
+                <div class="ad-banner mb-4" id="ad-banner">
+                    <span style="font-weight:600; color:#af7c1d;">Advertisement</span><br>                    <video id="ad-video" width="100%" height="auto" style="border-radius:6px; margin-top:6px;" controls muted autoplay loop poster="../logo.jpg">
+                        <source src="../217958_tiny.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>                <h1 class="text-center">Top News Headlines</h1>
+                <div id="news-container" class="row g-4"></div>
+                      <div class="d-flex justify-content-around my-4">
+                    <button id="prev-page" class="btn btn-primary">Previous page</button>
+                    <button id="next-page" class="btn btn-primary">Next page</button>
+                </div>
+                <!-- Contact Footer Section -->
+                <footer class="mt-5 mb-4 p-4" style="background: #343a40; border-radius: 10px; box-shadow: 0 -2px 12px rgba(0,0,0,0.1);">
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <h5 class="text-white mb-3"><i class="fas fa-map-marker-alt me-2"></i>Address</h5>
+                            <p class="text-light mb-0">Madhumitha B</p>
+                            <p class="text-light mb-0">Avadi, Chennai - 600066</p>
+                            <p class="text-light">Tamil Nadu, India</p>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <h5 class="text-white mb-3"><i class="fas fa-phone me-2"></i>Contact</h5>
+                            <p class="text-light mb-0"><i class="fas fa-envelope me-2"></i>Email:boopathygopal2014@gmail.com</p>
+                            <p class="text-light mb-0"><i class="fas fa-phone me-2"></i>Phone: +91 9940033064</p>
+                            
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <h5 class="text-white mb-3"><i class="fas fa-clock me-2"></i>Working Hours</h5>
+                            <p class="text-light mb-0">Monday - Saturday</p>
+                            <p class="text-light mb-0">9:00 AM - 4:30 PM</p>
+                            <div class="mt-3">
+                                <a href="https://www.facebook.com/velammalec/" target="_blank" class="btn btn-outline-light btn-sm me-2">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                                <a href="https://twitter.com/VelammalEnggC" target="_blank" class="btn btn-outline-light btn-sm me-2">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/school/velammal-engineering-college/" target="_blank" class="btn btn-outline-light btn-sm me-2">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="https://www.instagram.com/vec_chennai/" target="_blank" class="btn btn-outline-light btn-sm">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center text-light mt-3">
+                        <small>© All rights reserved.</small>
+                    </div>
+                </footer>
+            </div>
+            <div class="col-lg-3 col-12 d-flex flex-column" style="min-height:100vh; background:#e9f0fa; border-radius:0;">
+                <!-- YouTube Features Moved Above Weather -->
+                <div class="card shadow-sm mb-4" style="border-radius:16px; background:#fff; border:1px solid #e0e0e0; margin-top:7px; min-height:420px;">
+                    <div class="card-body p-3 d-flex flex-column" style="height:100%;">
+                        <!-- YouTube Search Bar -->
+                        <form id="youtube-search-form" class="mb-3" onsubmit="youtubeSearch(event)">
+                            <div class="input-group">
+                                <input type="text" id="youtube-search-input" class="form-control" placeholder="Search YouTube..." aria-label="YouTube Search">
+                                <button class="btn btn-danger" type="submit"><i class="fab fa-youtube me-1"></i>Search</button>
+                            </div>
+                        </form>
+                        <!-- User Requested YouTube Playlist Embed -->
+                        <div class="mb-3 flex-grow-1 d-flex flex-column justify-content-center">
+                            <div style="font-weight:600; color:#c4302b; margin-bottom:8px;"><i class="fab fa-youtube me-1"></i>YouTube Mix Playlist</div>
+                            <div class="ratio" style="--bs-aspect-ratio:60%; min-height:260px;">
+                                <iframe src="https://www.youtube.com/embed/6IldC1pjjvM?list=RD6IldC1pjjvM&start_radio=1" title="YouTube Mix Playlist" allowfullscreen style="border-radius:12px; min-height:240px;"></iframe>
+                            </div>
+                        </div>
+                        <!-- Open YouTube Button -->
+                        <div class="d-flex justify-content-end mt-auto">
+                            <a href="https://www.youtube.com/" target="_blank" class="btn btn-danger btn-sm" style="font-weight:600;"><i class="fab fa-youtube me-1"></i>Open YouTube</a>
+                        </div>
+                    </div>
+                </div>
+                <section id="weather" class="p-3">
+                    <h2>Current Weather</h2>
+                    <div class="d-flex gap-2 justify-content-end mb-2">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="unitDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background:#6b7c8a; border:none; font-weight:500; min-width:44px;">
+                                &deg;C
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="unitDropdown">
+                                <li><a class="dropdown-item" href="#" onclick="setUnit('C')">&deg;C</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="setUnit('F')">&deg;F</a></li>
+                            </ul>
+                        </div>
+                        <button class="btn btn-info btn-sm d-flex align-items-center" style="font-weight:600; color:#1a2235; background:#e6f0ff; border:1px solid #b0b8c1; border-radius:8px;" data-bs-toggle="modal" data-bs-target="#msnQrModal">
+                            <i class="fas fa-mobile-alt me-2"></i> Live Weather on Mobile
+                        </button>
+                    </div>
+                    <form id="weather-location-form" class="mb-2" onsubmit="changeWeatherLocation(event)">
+                        <div class="input-group">
+                            <input type="text" id="weather-location-input" class="form-control" placeholder="Enter city, state, or country" aria-label="Location">
+                            <button class="btn btn-primary" type="submit">Change</button>
+                        </div>
+                    </form>
+                    <div id="weather-info">
+                        <p>Loading weather data...</p>
+                    </div>
+                </section>
+                <!-- Play Store Section -->
+                <section id="play-store" class="p-3">
+                    <h2 class="mb-3"><i class="fab fa-google-play me-2"></i>Play Store Apps</h2>
+                    <div class="card shadow-sm" style="border-radius:16px; background:#fff; border:1px solid #e0e0e0;">
+                        <div class="card-body p-3">
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                <span style="color:#1a73e8; font-weight:700; font-size:1.2rem;">Featured Apps</span>
+                                <a href="https://play.google.com" target="_blank" 
+                                   class="btn btn-success btn-sm" 
+                                   style="background:#1a73e8; border:none; font-weight:600;">
+                                   <i class="fab fa-google-play me-1"></i>Open Play Store
+                                </a>
+                            </div>
+                            <div class="row g-3">
+                                <!-- Weather App -->
+                                <div class="col-12">                                    <div class="d-flex align-items-center p-2" style="background:#f7faff; border-radius:12px;">                                        <img src="https://play-lh.googleusercontent.com/GH23d7lG4YP8DFf08LsJnLwL6KrHEZ2cwcoJO0ytWoYV5NJuEvG8pLBdWRo4tq59Ww" 
+                                             alt="Weather App" 
+                                             style="width:64px; height:64px; border-radius:12px; object-fit: cover; border: 1px solid #e0e0e0;">
+                                        <div class="ms-3 flex-grow-1">
+                                            <div style="font-weight:600; font-size:1.1rem;">Weather & Radar</div>
+                                            <div style="color:#555; font-size:0.9rem;">Live local weather forecast & alerts</div>
+                                            <div style="font-size:0.85rem; color:#1a73e8;"><i class="fas fa-star"></i> 4.5 • 10M+ downloads</div>
+                                        </div>
+                                        <a href="https://play.google.com/store/apps/details?id=com.wetter.androidclient" 
+                                           target="_blank" 
+                                           class="btn btn-outline-success btn-sm ms-2" 
+                                           style="white-space:nowrap;">
+                                           <i class="fas fa-download me-1"></i>Install
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- News App -->
+                                <div class="col-12">                                    <div class="d-flex align-items-center p-2" style="background:#f7faff; border-radius:12px;">                                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Google_news_logo.png" 
+                                             alt="Google News" 
+                                             style="width:64px; height:64px; border-radius:12px; object-fit: cover; border: 1px solid #e0e0e0;">
+                                        <div class="ms-3 flex-grow-1">
+                                            <div style="font-weight:600; font-size:1.1rem;">Google News</div>
+                                            <div style="color:#555; font-size:0.9rem;">More stories, perspectives & insights</div>
+                                            <div style="font-size:0.85rem; color:#1a73e8;"><i class="fas fa-star"></i> 4.3 • 1B+ downloads</div>
+                                        </div>
+                                        <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.magazines" 
+                                           target="_blank" 
+                                           class="btn btn-outline-success btn-sm ms-2" 
+                                           style="white-space:nowrap;">
+                                           <i class="fas fa-download me-1"></i>Install
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- Games App -->
+                                <div class="col-12">                                    <div class="d-flex align-items-center p-2" style="background:#f7faff; border-radius:12px;">                                        <img src="https://play-lh.googleusercontent.com/szHQCpMAb0MikYIhvNG1MlruXFUggd6DJHXkMPG1H4lJPB7Lee_BkODfwxpQazxfO9mA" 
+                                             alt="Google Play Games" 
+                                             style="width:64px; height:64px; border-radius:12px; object-fit: cover; border: 1px solid #e0e0e0;">
+                                        <div class="ms-3 flex-grow-1">
+                                            <div style="font-weight:600; font-size:1.1rem;">Google Play Games</div>
+                                            <div style="color:#555; font-size:0.9rem;">Play, track & discover games</div>
+                                            <div style="font-size:0.85rem; color:#1a73e8;"><i class="fas fa-star"></i> 4.2 • 5B+ downloads</div>
+                                        </div>
+                                        <a href="https://play.google.com/store/apps/details?id=com.google.android.play.games" 
+                                           target="_blank" 
+                                           class="btn btn-outline-success btn-sm ms-2" 
+                                           style="white-space:nowrap;">
+                                           <i class="fas fa-download me-1"></i>Install
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- YouTube App -->
+                                <div class="col-12">                                    <div class="d-flex align-items-center p-2" style="background:#f7faff; border-radius:12px;">                                        <img src="https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc" 
+                                             alt="YouTube" 
+                                             style="width:64px; height:64px; border-radius:12px; object-fit: cover; border: 1px solid #e0e0e0;">
+                                        <div class="ms-3 flex-grow-1">
+                                            <div style="font-weight:600; font-size:1.1rem;">YouTube</div>
+                                            <div style="color:#555; font-size:0.9rem;">Videos, music & live streams</div>
+                                            <div style="font-size:0.85rem; color:#1a73e8;"><i class="fas fa-star"></i> 4.4 • 10B+ downloads</div>
+                                        </div>
+                                        <a href="https://play.google.com/store/apps/details?id=com.google.android.youtube" 
+                                           target="_blank" 
+                                           class="btn btn-outline-success btn-sm ms-2" 
+                                           style="white-space:nowrap;">
+                                           <i class="fas fa-download me-1"></i>Install
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- Spotify App -->
+                                <div class="col-12">                                    <div class="d-flex align-items-center p-2" style="background:#f7faff; border-radius:12px;">                                        <img src="https://play-lh.googleusercontent.com/UrY7BAZ-XfXGpfkeWg0zCCeo-7ras4DCoRalC_WXXWTK9q5b0Iw7B0YQMsVxZaNB7DM" 
+                                             alt="Spotify" 
+                                             style="width:64px; height:64px; border-radius:12px; object-fit: cover; border: 1px solid #e0e0e0;">
+                                        <div class="ms-3 flex-grow-1">
+                                            <div style="font-weight:600; font-size:1.1rem;">Spotify</div>
+                                            <div style="color:#555; font-size:0.9rem;">Music & podcasts streaming</div>
+                                            <div style="font-size:0.85rem; color:#1a73e8;"><i class="fas fa-star"></i> 4.3 • 1B+ downloads</div>
+                                        </div>
+                                        <a href="https://play.google.com/store/apps/details?id=com.spotify.music" 
+                                           target="_blank" 
+                                           class="btn btn-outline-success btn-sm ms-2" 
+                                           style="white-space:nowrap;">
+                                           <i class="fas fa-download me-1"></i>Install
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- MSN Weather QR Modal (styled to match screenshot, with QR code for the provided link) -->
+<div class="modal fade" id="msnQrModal" tabindex="-1" aria-labelledby="msnQrModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="border-radius:18px; background:linear-gradient(90deg,#f3f4fa 0%,#e6f0ff 100%); border:1px solid #d0d8f0; min-width:420px; min-height:260px;">
+      <div class="modal-header border-0" style="background:transparent;">
+        <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-4">
+        <div style="font-size:1.35rem; font-weight:800; color:#232e47; text-align:center; width:100%; letter-spacing:0.5px; margin-bottom:2px;">Scan the QR code</div>
+        <div style="color:#1a73e8; font-size:1.08rem; font-weight:600; margin-bottom:10px; text-align:center; width:100%;">Enjoy real-time, hyperlocal and the most accurate forecast on mobile</div>
+        <div class="row w-100 align-items-center justify-content-center" style="min-height:180px;">
+          <div class="col-6 d-flex flex-column align-items-center justify-content-center">
+            <img src="https://cdn.dribbble.com/userupload/23750015/file/original-87211b7dc987cfcc0ae620012934a1ed.gif" alt="Weather Animation" style="width:180px; height:180px; border-radius:10px; margin-bottom:10px; box-shadow:0 2px 8px #0001; background:#fff; object-fit:cover;">
+          </div>
+          <div class="col-6 d-flex flex-column align-items-center justify-content-center">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://www.msn.com/en-in/weather/forecast/in-Chennai,TN?loc=eyJsIjoiQ2hlbm5haSIsInIiOiJUTiIsImMiOiJJbmRpYSIsImkiOiJJTiIsImciOiJlbi1pbiIsIngiOiI4MC4yMzAwMDAiLCJ5IjoiMTMuMDcyOTk5In0=&weadegreetype=C" alt="MSN Weather QR" style="width:180px; height:180px; border-radius:10px; border:2px solid #b0b8c1; display:block; margin-bottom:8px;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+                <style>
+                .calendar-card {
+                    border-radius: 20px;
+                    background: transparent;
+                    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+                    overflow: hidden;
+                    position: relative;
+                }
+
+                .calendar-header {
+                    background: linear-gradient(135deg, #1a73e8, #43a047);
+                    color: #fff;
+                    padding: 15px 20px;
+                    font-size: 1.2rem;
+                    position: relative;
+                    z-index: 2;
+                }
+
+                .calendar-header .btn-light {
+                    background: rgba(255,255,255,0.2);
+                    border: 1px solid rgba(255,255,255,0.3);
+                    color: #fff;
+                    transition: all 0.3s ease;
+                }
+
+                .calendar-header .btn-light:hover {
+                    background: rgba(255,255,255,0.3);
+                    transform: translateY(-2px);
+                }
+
+                .calendar-body {
+                    position: relative;
+                    height: 600px;
+                    overflow: hidden;
+                }
+
+                .calendar-background {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-image: url('https://anegabawa.com/wp-content/uploads/2024/05/baby-girl-photoshoot-3-4-5-6-months-brown-yellow-floral-backdrop-white-frock-delhi-gurgaon-noida-anega-bawa.jpg');
+                    background-size: cover;
+                    background-position: center;
+                    filter: brightness(1);
+                    z-index: 1;
+                }
+
+                .calendar-wrapper {
+                    position: relative;
+                    z-index: 2;
+                    height: 100%;
+                    background: rgba(255,255,255,0.75);
+                    backdrop-filter: blur(2px);
+                }
+
+                .calendar-wrapper iframe {
+                    width: 100%;
+                    height: 100%;
+                    border: none;
+                }
+                </style>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const newsApiKey = "44b56fd1a58247c087ca3d8e7f1282e3"; 
+        const weatherApiKey = "0d959e216301422586f35721242409"; 
+        let currentPage = 1;
+        let currentUnit = localStorage.getItem('unit') || 'C';
+        let lastWeatherLocation = 'Chennai';
+        let lastWeatherData = null;
+
+        function setUnit(unit) {
+            currentUnit = unit;
+            localStorage.setItem('unit', unit);
+            // Re-render weather if data is available
+            if (lastWeatherData) renderWeather(lastWeatherData);
+            // Update dropdown label
+            document.getElementById('unitDropdown').innerHTML = unit === 'C' ? '&deg;C' : '&deg;F';
+        }
+
+        function fetchNews(page = 1) {
+            const url = `https://newsapi.org/v2/top-headlines?country=us&pageSize=6&page=${page}&apiKey=${newsApiKey}`;
+            fetch(url)
+                .then((response) => response.json())
+                .then((data) => renderNews(data.articles))
+                .catch((error) => console.error("Error fetching the news:", error));
+        }
+
+        function fetchCategory(category) {
+            const url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&pageSize=6&apiKey=${newsApiKey}`;
+            fetch(url)
+                .then((response) => response.json())
+                .then((data) => renderNews(data.articles))
+                .catch((error) => console.error("Error fetching category news:", error));
+        }
+
+        function renderNews(articles) {
+            const newsContainer = document.getElementById("news-container");
+            newsContainer.innerHTML = "";
+
+            articles.forEach((article) => {
+                const publishedDate = new Date(article.publishedAt).toLocaleString();
+                const author = article.author ? article.author : "Unknown";
+                const publisher = article.source.name ? article.source.name : "Unknown";
+
+                const newsCard = `
+                    <div class="col-md-4 d-flex align-items-stretch">
+                        <div class="card my-4">
+                            <img src="${article.urlToImage || "https://via.placeholder.com/300x200?text=No+Image"}" class="card-img-top" alt="News Image">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">${article.title}</h5>
+                                <p class="text-muted">By ${author} | ${publisher} | ${publishedDate}</p>
+                                <p class="card-text flex-grow-1">${article.description || "No description available"}</p>
+                                <a href="${article.url}" target="_blank" class="btn btn-primary mt-auto">Read more</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                newsContainer.innerHTML += newsCard;
+            });
+        }
+
+        document.getElementById("prev-page").addEventListener("click", () => {
+            if (currentPage > 1) {
+                currentPage--;
+                fetchNews(currentPage);
+            }
+        });
+
+        document.getElementById("next-page").addEventListener("click", () => {
+            currentPage++;
+            fetchNews(currentPage);
+        });
+
+        function searchNews(event) {
+            event.preventDefault();
+            const query = document.getElementById("search-input").value;
+           
+            if (query) {
+                const url = `https://newsapi.org/v2/everything?q=${query}&pageSize=6&apiKey=${newsApiKey}`;
+                fetch(url)
+                    .then((response) => response.json())
+                    .then((data) => renderNews(data.articles))
+                    .catch((error) => console.error("Error fetching search results:", error));
+            } else {
+                alert("Please enter a search term.");
+            }
+        }
+
+        function fetchRealTimeStockData() {
+            // Multiple indices symbols for Yahoo Finance
+            const symbols = [
+                '^NSEI', // NIFTY
+                '^BSESN', // SENSEX
+                '^DJI', // DOW
+                '^FTSE', // FTSE 100
+                '^N225', // Nikkei 225
+                '^IXIC', // NASDAQ
+                '^GSPC', // S&P 500
+                '^GDAXI', // DAX
+                'NFLX' // Netflix
+            ];
+            const url = `https://yfapi.net/v6/finance/quote?region=IN&lang=en&symbols=${symbols.join(',')}`;
+            fetch(url, {
+                headers: {
+                    'x-api-key': 'demo' // Replace with your Yahoo Finance API key
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                renderStockMarketData(data);
+            })
+            .catch(error => {
+                // Fallback to static demo data if fetch fails
+                renderStockMarketData(null, true);
+            });
+        }
+
+        function renderStockMarketData(data, isDemo = false) {
+            // Market meta info
+            const marketMeta = [
+                { name: 'SENSEX', symbol: 'SENSEX', code: '^BSESN', color: '#e53935' },
+                { name: 'NIFTY', symbol: 'NIFTY', code: '^NSEI', color: '#e53935' },
+                { name: 'DOW', symbol: 'DJI', code: '^DJI', color: '#43a047' },
+                { name: 'FTSE 100', symbol: 'UKX', code: '^FTSE', color: '#e53935' },
+                { name: 'Nikkei 225', symbol: 'N225', code: '^N225', color: '#e53935' },
+                { name: 'NASDAQ', symbol: 'COMP', code: '^IXIC', color: '#43a047' },
+                { name: 'S&P 500', symbol: 'INX', code: '^GSPC', color: '#e53935' },
+                { name: 'DAX', symbol: 'DAX', code: '^GDAXI', color: '#e53935' }
+            ];
+            // Demo data fallback
+            const demoMarkets = [
+                { name: 'SENSEX', symbol: 'SENSEX', price: 80951.99, change: -0.79, chart: 'red', code: '^BSESN' },
+                { name: 'NIFTY', symbol: 'NIFTY', price: 24609.70, change: -0.82, chart: 'red', code: '^NSEI' },
+                { name: 'DOW', symbol: 'DJI', price: 41793.74, change: -0.16, chart: 'green', code: '^DJI' },
+                { name: 'FTSE 100', symbol: 'UKX', price: 8708.36, change: -0.89, chart: 'red', code: '^FTSE' },
+                { name: 'Nikkei 225', symbol: 'N225', price: 36985.87, change: -0.84, chart: 'red', code: '^N225' },
+                { name: 'NASDAQ', symbol: 'COMP', price: 18982.81, change: 0.58, chart: 'green', code: '^IXIC' },
+                { name: 'S&P 500', symbol: 'INX', price: 5840.89, change: -0.06, chart: 'red', code: '^GSPC' },
+                { name: 'DAX', symbol: 'DAX', price: 23961.32, change: -0.67, chart: 'red', code: '^GDAXI' }
+            ];
+            let markets = demoMarkets;
+            if (data && data.quoteResponse && data.quoteResponse.result && data.quoteResponse.result.length > 0) {
+                // Map API data to our meta
+                markets = marketMeta.map((meta, idx) => {
+                    const found = data.quoteResponse.result.find(r => r.symbol === meta.code);
+                    return found ? {
+                        name: meta.name,
+                        symbol: meta.symbol,
+                        price: found.regularMarketPrice,
+                        change: found.regularMarketChangePercent,
+                        chart: found.regularMarketChangePercent >= 0 ? 'green' : 'red',
+                        color: found.regularMarketChangePercent >= 0 ? '#43a047' : '#e53935',
+                        code: meta.code
+                    } : demoMarkets[idx];
+                });
+            }
+            const stockInfo = document.getElementById('stock-info');
+            stockInfo.innerHTML = `
+            <div class="card shadow-sm" style="border-radius:18px; background:#fff; border:1px solid #e0e0e0;">
+              <div class="card-body p-3 pb-2">
+                <div class="d-flex align-items-center mb-3">
+                  <i class="fas fa-chart-line" style="color:#1a73e8; font-size:1.3rem; margin-right:8px;"></i>
+                  <span style="color:#1a73e8; font-weight:700; font-size:1.2rem;">Markets <i class='fas fa-angle-right' style='font-size:1rem;'></i></span>
+                </div>
+                <div>
+                  ${markets.map((m, i) => {
+                    let clickAction = '';
+                    if (m.name === 'SENSEX') {
+                      clickAction = "window.open('https://www.msn.com/en-in/money/watchlist?id=ahkucw&tab=Markets&ocid=msedgntp&cvid=2134278b42d84421ac2e0f268da314d8&pc=HCTS&ei=30','_blank')";
+                    } else if (m.name === 'NIFTY') {
+                      clickAction = "window.open('https://www.msn.com/en-in/money/watchlist?id=ahkqww&tab=Markets&ocid=msedgntp&cvid=2134278b42d84421ac2e0f268da314d8&pc=HCTS&ei=30','_blank')";
+                    } else if (m.name === 'DOW') {
+                      clickAction = "window.open('https://www.msn.com/en-in/money/watchlist?id=a6qja2&tab=Markets&ocid=msedgntp&cvid=2134278b42d84421ac2e0f268da314d8&pc=HCTS&ei=30','_blank')";
+                    } else if (m.name === 'FTSE 100') {
+                      clickAction = "window.open('https://www.msn.com/en-in/money/watchlist?id=aopnp2&tab=Markets&ocid=msedgntp&cvid=2134278b42d84421ac2e0f268da314d8&pc=HCTS&ei=30','_blank')";
+                    } else if (m.name === 'Nikkei 225') {
+                      clickAction = "window.open('https://www.msn.com/en-in/money/watchlist?id=a9j7bh&tab=Markets&ocid=msedgntp&cvid=2134278b42d84421ac2e0f268da314d8&pc=HCTS&ei=30','_blank')";
+                    } else if (m.name === 'NASDAQ') {
+                      clickAction = "window.open('https://www.msn.com/en-in/money/watchlist?id=a3oxnm&tab=Markets&ocid=msedgntp&cvid=2134278b42d84421ac2e0f268da314d8&pc=HCTS&ei=30','_blank')";
+                    } else if (m.name === 'S&P 500') {
+                      clickAction = "window.open('https://www.msn.com/en-in/money/watchlist?id=a33k6h&tab=Markets&ocid=msedgntp&cvid=2134278b42d84421ac2e0f268da314d8&pc=HCTS&ei=30','_blank')";
+                    } else if (m.name === 'DAX') {
+                      clickAction = "window.open('https://www.msn.com/en-in/money/watchlist?id=afx2kr&tab=Markets&ocid=msedgntp&cvid=2134278b42d84421ac2e0f268da314d8&pc=HCTS&ei=30','_blank')";
+                    } else {
+                      clickAction = `window.location.href='market-details.html?symbol=${encodeURIComponent(m.code)}'`;
+                    }
+                    return `
+                    <div class="d-flex align-items-center justify-content-between py-2 px-1 mb-1 market-row" style="border-radius:10px; background:${i===1?'#f0f6ff':'transparent'}; border-left:${i===1?'3px solid #1a73e8':'none'}; cursor:pointer;"
+    onclick=\"${clickAction}\">
+    <div class=\"d-flex flex-column\" style=\"min-width:90px;\">
+      <span style=\"font-weight:600; font-size:1.05rem;\">${m.name}</span>
+      <span class=\"text-muted\" style=\"font-size:0.92rem;\">${m.symbol}</span>
+    </div>
+    <div class=\"d-flex align-items-center gap-2\">
+      <img src=\"https://quickchart.io/chart?c={type:'sparkline',data:{datasets:[{data:[${m.chart==='green'?'2,8,6,12,10,16,20':'20,16,12,10,8,6,2'}]}]}}\" alt=\"spark\" style=\"width:60px; height:22px; margin-right:6px;\">
+      <span style=\"font-weight:600; color:${m.change>=0?'#43a047':'#e53935'}; font-size:1.05rem; text-align:right; min-width:60px;\">${m.price.toLocaleString(undefined,{maximumFractionDigits:2})}</span>
+      <span style=\"font-weight:600; color:${m.change>=0?'#43a047':'#e53935'}; font-size:1.05rem; min-width:54px; text-align:right;\">${m.change>0?'+':''}${m.change.toFixed(2)}%</span>
+    </div>
+  </div>
+                    `;
+                  }).join('')}
+                </div>
+              </div>
+            </div>
+            `;
+        }
+
+        // Advertisement Video as External Link
+        const adVideoUrl = 'https://www.mazda.ca/en/vehicles/cx-90/';
+        // const adBanner = document.getElementById('ad-banner');
+        // adBanner.innerHTML = `
+        //     <span style="font-weight:600; color:#af7c1d;">Advertisement</span><br>
+        //     <video id="ad-video" width="100%" height="auto" style="border-radius:6px; margin-top:6px;" controls muted autoplay loop poster="logo.jpg">
+        //         <source src="https://media.mazda.ca/video/2024-cx-90-inline6.mp4" type="video/mp4">
+        //         Your browser does not support the video tag.
+        //     </video>
+        //     <div class="mt-2">
+        //         <a href="${adVideoUrl}" target="_blank" class="btn btn-outline-primary btn-sm">Learn more about Mazda CX-90</a>
+        //     </div>
+        // `;
+
+        function fetchWeather(location = 'Chennai') {
+            const weatherInfo = document.getElementById('weather-info');
+            weatherInfo.innerHTML = '<p>Loading weather data...</p>';
+            fetch(`https://api.weatherapi.com/v1/forecast.json?key=${weatherApiKey}&q=${encodeURIComponent(location)}&days=4&aqi=no&alerts=no`)
+                .then(response => response.json())
+                .then(data => renderWeather(data))
+                .catch(() => {
+                    weatherInfo.innerHTML = '<div class="text-danger">Weather data not available.</div>';
+                });
+        }
+
+        function renderWeather(data) {
+            lastWeatherData = data;
+            if (!data || !data.location || !data.current || !data.forecast) {
+                document.getElementById('weather-info').innerHTML = '<div class="text-danger">Weather data not available.</div>';
+                return;
+            }
+            const loc = data.location;
+            const curr = data.current;
+            const forecast = data.forecast.forecastday;
+            // MSN Weather URL for this location
+            const msnUrl = `https://www.msn.com/en-in/weather/forecast/in-${encodeURIComponent(loc.name)},${encodeURIComponent(loc.region)}?loc=eyJsIjoi${btoa(loc.name)}IiwiciI6Ii${btoa(loc.region)}Iiw"&weadegreetype=${currentUnit}`;
+            // Weather map iframe markup
+            const mapIframe = `
+  <div id="weather-map" class="mt-3 d-flex justify-content-center align-items-center" style="width:100%;height:240px;border-radius:16px;overflow:hidden;position:relative;background:linear-gradient(135deg,#b2d8f7 0%,#e9f0fa 100%);box-shadow:0 4px 18px 0 rgba(30,80,180,0.13);border:2px solid #a3c2e2;">
+    <div style="position:absolute;top:12px;left:18px;z-index:2;display:flex;align-items:center;">
+      <i class='fas fa-map-marker-alt' style='color:#1a73e8;font-size:1.3rem;margin-right:7px;'></i>
+     
+      <span style='font-weight:600;color:#1a2235;font-size:1.08rem;letter-spacing:0.5px;'>Weather Map</span>
+    </div>
+    <iframe width="100%" height="220" style="border:0;border-radius:12px;box-shadow:0 2px 12px 0 rgba(30,80,180,0.10);margin-top:10px;" loading="lazy" allowfullscreen src="https://www.openstreetmap.org/export/embed.html?bbox=${loc.lon-0.05}%2C${loc.lat-0.05}%2C${loc.lon+0.05}%2C${loc.lat+0.05}&layer=mapnik&marker=${loc.lat}%2C${loc.lon}"></iframe>
+    <div style="position:absolute;bottom:10px;right:18px;z-index:2;opacity:0.7;font-size:0.95rem;color:#1a2235;">
+      <i class="fas fa-cloud-sun"></i> Powered by OpenStreetMap
+    </div>
+  </div>`;
+            // Additional details
+            const sunrise = forecast[0]?.astro?.sunrise || '--';
+            const sunset = forecast[0]?.astro?.sunset || '--';
+            const moonrise = forecast[0]?.astro?.moonrise || '--';
+            const moonset = forecast[0]?.astro?.moonset || '--';
+            const moonPhase = forecast[0]?.astro?.moon_phase || '--';
+            const rainChance = forecast[0]?.day?.daily_chance_of_rain || '--';
+            const snowChance = forecast[0]?.day?.daily_chance_of_snow || '--';
+            // Helper for unit conversion
+            function temp(valC) {
+                if (currentUnit === 'F') return `${Math.round(valC * 9/5 + 32)}°F`;
+                return `${valC}°C`;
+            }
+            function tempShort(valC) {
+                return currentUnit === 'F' ? `${Math.round(valC * 9/5 + 32)}` : `${valC}`;
+            }
+            document.getElementById('weather-info').innerHTML = `
+                <div class=\"card shadow-sm mb-3\" style=\"border-radius:18px; background:#1a2235; color:#fff;\">
+                    <div class=\"card-body p-4\">
+                        <div class=\"d-flex align-items-center mb-3\">
+                            <img src=\"${curr.condition.icon}\" alt=\"icon\" style=\"width:64px; height:64px;\">
+                            <div class=\"ms-3\">
+                                <div style=\"font-size:1.5rem; font-weight:700;\">${loc.name}, ${loc.region || loc.country}</div>
+                                <div style=\"font-size:1.1rem; color:#b0b8c1;\">${new Date(loc.localtime).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                                <div style=\"font-size:1.1rem; color:#b0b8c1;\">${curr.condition.text}</div>
+                            </div>
+                            <div class=\"ms-auto\" style=\"font-size:3.2rem; font-weight:700; color:#fff;\">${temp(curr.temp_c)}</div>
+                        </div>
+                        <div class=\"mb-2\" style=\"font-size:1.1rem; color:#b0b8c1;\">Feels like <b>${temp(curr.feelslike_c)}</b></div>
+                        <div class="row mb-3 g-2">
+    <div class="col-6 col-md-4">
+        <div class="p-2 rounded shadow-sm weather-detail-box">
+            <i class='fas fa-wind me-1'></i> <span class="weather-detail-label">Wind</span><br><b class="weather-detail-value">${curr.wind_kph} km/h</b>
+        </div>
+    </div>
+    <div class="col-6 col-md-4">
+        <div class="p-2 rounded shadow-sm weather-detail-box">
+            <i class='fas fa-tint me-1'></i> <span class="weather-detail-label">Humidity</span><br><b class="weather-detail-value">${curr.humidity}%</b>
+        </div>
+    </div>
+    <div class="col-6 col-md-4">
+        <div class="p-2 rounded shadow-sm weather-detail-box">
+            <i class='fas fa-tachometer-alt me-1'></i> <span class="weather-detail-label">Pressure</span><br><b class="weather-detail-value">${curr.pressure_mb} mb</b>
+        </div>
+    </div>
+    <div class="col-6 col-md-4">
+        <div class="p-2 rounded shadow-sm weather-detail-box">
+            <i class='fas fa-temperature-low me-1'></i> <span class="weather-detail-label">Dew Point</span><br><b class="weather-detail-value">${temp(curr.dewpoint_c ?? curr.temp_c)}</b>
+        </div>
+    </div>
+    <div class="col-6 col-md-4">
+        <div class="p-2 rounded shadow-sm weather-detail-box">
+            <i class='fas fa-eye me-1'></i> <span class="weather-detail-label">Visibility</span><br><b class="weather-detail-value">${curr.vis_km} km</b>
+        </div>
+    </div>
+    <div class="col-6 col-md-4">
+        <div class="p-2 rounded shadow-sm weather-detail-box">
+            <i class='fas fa-sun me-1'></i> <span class="weather-detail-label">UV Index</span><br><b class="weather-detail-value">${curr.uv}</b>
+        </div>
+    </div>
+</div>                        <div class="row mb-3 g-2">
+    <div class="col-6 col-md-4">        <div class="p-2 rounded shadow-sm weather-detail-box">
+            <span style="font-size:1.2rem; margin-right:4px;">🌅</span> <span class="weather-detail-label">Sunrise</span><br><b class="weather-detail-value">${sunrise}</b>
+        </div>
+    </div>
+    <div class="col-6 col-md-4">
+        <div class="p-2 rounded shadow-sm weather-detail-box">
+            <span style="font-size:1.2rem; margin-right:4px;">🌇</span> <span class="weather-detail-label">Sunset</span><br><b class="weather-detail-value">${sunset}</b>
+        </div>
+    </div>
+    <div class="col-6 col-md-4">
+        <div class="p-2 rounded shadow-sm weather-detail-box">
+            <i class='fas fa-snow me-1'></i> <span class="weather-detail-label">Chance of Snow</span><br><b class="weather-detail-value">${snowChance}%</b>
+        </div>
+    </div>
+</div>
+<div class="row mb-3 g-2">
+    <div class="col-6 col-md-4">
+        <div class="p-2 rounded shadow-sm weather-detail-box">
+            <i class='fas fa-moon me-1'></i> <span class="weather-detail-label">Moonrise</span><br><b class="weather-detail-value">${moonrise}</b>
+        </div>
+    </div>
+    <div class="col-6 col-md-4">
+        <div class="p-2 rounded shadow-sm weather-detail-box">
+            <i class='fas fa-moon me-1'></i> <span class="weather-detail-label">Moonset</span><br><b class="weather-detail-value">${moonset}</b>
+        </div>
+    </div>
+    <div class="col-6 col-md-4">
+        <div class="p-2 rounded shadow-sm weather-detail-box">
+            <i class='fas fa-moon me-1'></i> <span class="weather-detail-label">Moon Phase</span><br><b class="weather-detail-value">${moonPhase}</b>
+        </div>
+    </div>
+</div>
+                        <div class="d-flex justify-content-end mb-2">
+                            <a href="${msnUrl}" target="_blank" class="btn btn-outline-light btn-sm"><i class="fas fa-external-link-alt"></i> View full forecast on MSN Weather</a>
+                        </div>
+                        ${mapIframe}
+                    </div>
+                </div>
+            `;
+        }
+
+        function changeWeatherLocation(event) {
+            event.preventDefault();
+            const input = document.getElementById('weather-location-input');
+            const location = input.value.trim();
+            if (location) {
+                fetchWeather(location);
+            }
+        }
+
+        // Try geolocation, fallback to default
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                pos => {
+                    const lat = pos.coords.latitude;
+                    const lon = pos.coords.longitude;
+                    fetchWeather(`${lat},${lon}`);
+                },
+                () => fetchWeather('Chennai'),
+                { timeout: 5000 }
+            );
+        } else {
+            fetchWeather('Chennai');
+        }
+
+        fetchNews();
+        fetchRealTimeStockData();
+
+        // Theme and unit initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('unitDropdown').innerHTML = currentUnit === 'C' ? '&deg;C' : '&deg;F';
+        });
+    </script>
+</body>
+</html>
