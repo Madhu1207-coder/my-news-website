@@ -7,8 +7,8 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/Madhu1207-coder/my-news-website" target="_blank">
-    <img src="https://img.shields.io/badge/🌐 Live%20Demo-Click%20Here-blue?style=for-the-badge&logo=web" />
+  <a href="https://1drv.ms/v/c/dd8a0b9fadfad057/Eeqpc9w773RKqhd7d3xuj6oBdasMFfon5AZ0nQkFnIXrEw" target="_blank" rel="noopener noreferrer">
+    <img src="https://img.shields.io/badge/🎥 Watch%20Demo%20Video-Click%20Here-blue?style=for-the-badge&logo=windows" alt="Watch Demo Video" />
   </a>
 </p>
 
