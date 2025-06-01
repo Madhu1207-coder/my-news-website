@@ -18,7 +18,9 @@
 <h2>🚀 About the Project</h2>
 
 💡 **My News Website** is a professional, dynamic, and fully responsive news portal that fetches and displays the latest news articles using the News API. Built with clean HTML, CSS, and JavaScript, the site offers category-wise browsing and smooth UI for users seeking real-time updates.
-
+<p align="center">
+  <img src="https://media3.giphy.com/media/sgyKLGTzFQAa8VCpF9/giphy.gif?cid=6c09b952f7zbban1dkpomrh5f8fwkp4aa00iux00ux7413xg&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g" width="300" alt="Thankyou  GIF"/>
+</p>
 ---
 
 <h2>✨ Features</h2>
