@@ -109,10 +109,14 @@ Or use **Live Server** in **VS Code** for real-time updates.
 
 ---
 
+
+
+<p align="center">
+  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/a2418f60390643.5a4b910e63f83.gif" alt="CV Banner" width="200" />
+</p>
+---
+
 <h2 align="center">⭐ Like this project? Star it on GitHub!</h2>
 <p align="center">🔁 Pull Requests are Welcome | 🎉 Contributions Appreciated</p>
 ```
-
----
-
-✅ Let me know if you want a **badge for News API**, or if you'd like to embed **interactive charts** showing news stats per category.
+<h2 align="center"> Made with ❤️ by Madhumitha B |  Frontend Developer</h2>
