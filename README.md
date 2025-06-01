@@ -61,7 +61,7 @@
 <h2>🖼️ Project Output Preview</h2>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Madhu1207-coder/my-news-website/main/assets/project-preview.jpeg" width="90%" alt="News Website Screenshot">
+  <img src="https://github.com/Madhu1207-coder/my-news-website/blob/main/output%20screen%20shot%201.jpeg" width="90%" alt="News Website Screenshot">
 </p>
 
 
