@@ -1,3 +1,4 @@
+
 <h1 align="center">📰 My News Website</h1>
 
 <p align="center">
@@ -22,19 +23,22 @@
 
 <h2>✨ Features</h2>
 
-- 📰 **Live News Feed** – Real-time news data using API
-- 🔎 **Search & Filter** – Topic search by keyword
-- 📁 **Category Tabs** – Browse by Business, Sports, Health, etc.
-- 🌐 **Responsive Layout** – Mobile and desktop optimized
-- 💡 **Minimal Design** – User-friendly and clean interface
+- 📰 **Live News Feed** – Real-time news data using API  
+- 🔎 **Search & Filter** – Topic search by keyword  
+- 📁 **Category Tabs** – Browse by Business, Sports, Health, etc.  
+- 🌐 **Responsive Layout** – Mobile and desktop optimized  
+- 💡 **Minimal Design** – User-friendly and clean interface  
 
 ---
 
-<h2>🎥 Live Preview (GIF)</h2>
+<h2>📊 Project Highlights</h2>
 
-<p align="center">
-  <img src="https://github.com/Madhu1207-coder/my-news-website/blob/main/assets/news-preview.gif" width="80%" alt="Live Preview GIF">
-</p>
+✅ Built from scratch with HTML, CSS, and JavaScript  
+🚀 Uses **Fetch API** to dynamically render live news articles  
+📌 Includes intuitive tab-based navigation for top categories  
+📱 Fully responsive using **flexbox** and **media queries**  
+💬 Simple and elegant UI for an engaging news reading experience  
+🔄 Optimized for both desktop and mobile platforms  
 
 ---
 
@@ -47,19 +51,8 @@
 ├── script.js              # JavaScript logic
 ├── /assets
 │   ├── news-preview.gif   # Animated GIF for README
-│   ├── desktop-view.jpg   # Screenshot - desktop
-│   ├── mobile-view.jpg    # Screenshot - mobile
-│   └── search.jpg         # Screenshot - search
 └── README.md              # Project overview
 ````
-
----
-
-<h2>🖼️ Screenshots</h2>
-
-| Desktop View                                                                              | Mobile View                                                                              | Search Feature                                                                      |
-| ----------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| ![](https://github.com/Madhu1207-coder/my-news-website/blob/main/assets/desktop-view.jpg) | ![](https://github.com/Madhu1207-coder/my-news-website/blob/main/assets/mobile-view.jpg) | ![](https://github.com/Madhu1207-coder/my-news-website/blob/main/assets/search.jpg) |
 
 ---
 
@@ -113,5 +106,4 @@ Or use **Live Server** in **VS Code** for real-time updates.
 
 ---
 
-
-
+✅ Let me know if you want a **badge for News API**, or if you'd like to embed **interactive charts** showing news stats per category.
