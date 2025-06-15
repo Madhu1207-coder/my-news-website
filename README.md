@@ -7,13 +7,7 @@
   <img src="https://img.shields.io/badge/JavaScript-Fetch API-yellow?style=flat-square&logo=javascript" />
 </p>
 
-<p align="center">
-  <a href="https://youtu.be/Idm1JD112EU" target="_blank">
-    <img src="https://img.shields.io/badge/🎥 Watch Demo Video-Click Here-red?style=for-the-badge&logo=windows" />
-  </a>
-</p>
 
----
 
 <h2>🚀 About the Project</h2>
 
