@@ -127,6 +127,16 @@ Or use **Live Server** in **VS Code** for real-time updates.
 </p>
 
 
+### ⚠️ Important Notice
+
+This project was created by **Madhumitha B** for learning and demonstration purposes only.
+
+❌ Do not copy, reuse, or submit this project or its code as your own work.  
+🚫 Unauthorized reproduction or modification is prohibited.  
+🛡️ Protected under copyright law.
+
+📧 For permissions, contact: madhumithab1207@gmail.com
+
 
 
 
@@ -137,5 +147,5 @@ Or use **Live Server** in **VS Code** for real-time updates.
 
 <h2 align="center">⭐ Like this project? Star it on GitHub!</h2>
 <p align="center">🔁 Pull Requests are Welcome | 🎉 Contributions Appreciated</p>
-```
+
 <h2 align="center"> Made with ❤️ by Madhumitha B |  Frontend Developer</h2>
